@@ -1,5 +1,6 @@
 from copy import copy
 from datetime import datetime
+from functools import reduce
 import json
 from operator import attrgetter, itemgetter
 
@@ -209,5 +210,13 @@ def c_to_f(temp):
 good_temps = [c_to_f(temperature) for temperature in temperatures if 9 <= temperature <= 32.6]
 print(good_temps)
 
-# y_words = [word for word in words if word[0] == 'y']
-# return any(["Roland" in subject for subject in book.subjects])
+def product(x, y):
+    return (x * y)
+
+print(reduce(product, [1, 2, 3, 4, 5]))
+
+def add_book_prices(book1, book2):
+    return book1 + book2
+
+total = reduce(add_book_prices, [b.price for b in BOOKS])
+print("total price {}".format(total))
